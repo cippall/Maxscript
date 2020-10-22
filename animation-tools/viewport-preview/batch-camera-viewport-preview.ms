@@ -4,7 +4,7 @@
 *   Date                :   22-10-2020
 *   Version             :   1.0
 *   Description         :   Create viewport preview for the selected camera or for all cameras in the scene. 
-*                           Requieres user input to select the destination folder for saving the preview.
+*                           Propmts for user input to select the output folder.
 *                           For each camera in the scene the script will create a folder based on the camera name 
 *                           and save the animation preview as a .jpg sequence.
 *
@@ -327,7 +327,7 @@ Icon:#("Cameras",2)
 
     fn removeViewportHighliting = 
     (
-        local oHelper = box name:"vpg_helper"
+        local oHelper = Point name:"vpg_helper"
         select oHelper
         clearSelection()
         append aHelper oHelper
@@ -336,7 +336,7 @@ Icon:#("Cameras",2)
 
     fn removeViewportHighlitingHelper = 
     (
-        for oHelper in aHelper do 
+        for oHelper in aHelper where isvalidnode oHelper do 
         (
             delete oHelper
         )
@@ -432,9 +432,7 @@ Icon:#("Cameras",2)
         (
             if (renderWidth != 1920) then
             (
-                messageBox "Warning : The rendering resolution is not the standard HD."
-        
-                if queryBox "Do you want to switch to 1920x1080 ?" beep:false then
+                if queryBox "Warning : The rendering resolution is not the standard HD. \n Do you want to switch to 1920x1080 ?" beep:false then
                 (
                     if renderSceneDialog.isOpen() then
                     (
@@ -446,27 +444,46 @@ Icon:#("Cameras",2)
                 )    
             )
             
-            sOuputFolder = getOutputDirectory()
+            try
+			(
+				sOuputFolder = getOutputDirectory()
 
-            if sOuputFolder != undefined then
-            (
-                getCurrentTimeRange()
-                hideCategories()
-                setViewportShadingType()
-                removeViewportHighliting()
-                setAreaTorenderToView()
+				if sOuputFolder != undefined then
+				(
+					getCurrentTimeRange()
+					hideCategories()
+					setViewportShadingType()
+					removeViewportHighliting()
+					setAreaTorenderToView()
+					
+					progressStart "Create preview:"
+					escapeEnable = true
+					progressStop = false
 
-                for oCamera in aCameras do 
-                (
-                    createCamerasPreview oCamera sOuputFolder
-                    windows.processPostedMessages()
-                )
+					for x = 1 to aCameras.count while not progressStop do 
+					(
+						windows.processPostedMessages()   
+						createCamerasPreview aCameras[x] sOuputFolder
+						progPerct = (100.0 * x / aCameras.count) as integer
+						progressUpdate progPerct
+						progressStop = keyboard.escPressed
+					)
+					
+					progressEnd()
 
-                restoreHiddenCategories()
-                removeViewportHighlitingHelper()
-                restoreAreaToRender()
-                restoreTimeRange()
-            ) 
+					restoreHiddenCategories()
+					removeViewportHighlitingHelper()
+					restoreAreaToRender()
+					restoreTimeRange()
+				) 
+			)
+			catch
+			(
+					restoreHiddenCategories()
+					removeViewportHighlitingHelper()
+					restoreAreaToRender()
+					restoreTimeRange()
+			)
         )
     )
 
