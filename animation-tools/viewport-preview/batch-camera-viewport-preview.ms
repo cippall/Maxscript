@@ -10,9 +10,9 @@
     *                           and save the animation preview as a .jpg sequence.
     *
     *   Credits:
-    *       - Colin Serren  : http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
-    *       - HalfVector    : https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444
-    *       - Lone Robot    : http://lonerobot.net/?p=959
+    *       - Colin Serren  :   http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
+    *       - HalfVector    :   https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444
+    *       - Lone Robot    :   http://lonerobot.net/?p=959
     *
     */
 
@@ -30,11 +30,19 @@
     ) 
 
 
-
     fn getAnimatedCameras = 
     (
-        local aCameras = for c in cameras where ((classof c) != TargetObject) and ((classof c) != Dummy) collect c
-        
+        local aCameras = #()
+
+        if (getcurrentSelection()).count == 0 then 
+        (
+            aCameras = for c in cameras where ((classOf c) != TargetObject) and ((classOf c) != Dummy) collect c
+        )
+        else
+        (
+            aCameras = for c in getcurrentSelection() where ((superClassOf c) == camera) collect c
+        )
+
         return aCameras
     )
 
@@ -42,9 +50,9 @@
     fn getKeyFrames obj = 
     (
         /*
-        *    Source: Batch Camera Preview
-        *    Author: Colin Serren
-        *    Availability: http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
+        *    Source:        Batch Camera Preview
+        *    Author:        Colin Serren
+        *    Availability:  http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
         */
 
         local arrayOfKeys = #()
@@ -180,6 +188,11 @@
 
     fn filterStr str tokens replacement = 
     (
+        /*
+        *    Source:        Forum post <Remove escape sequence from file path string>
+        *    Author:        HalfVector
+        *    Availability:  https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444
+        */
 
         local finalStr = ""
         local aSplits = filterString str tokens
@@ -197,9 +210,9 @@
     function getValidString str = 
     (
         /*
-        *    Source: Batch Camera Preview Script
-        *    Author: Colin Serren
-        *    Availability: http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
+        *    Source:        Batch Camera Preview Script
+        *    Author:        Colin Serren
+        *    Availability:  http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
         */
 
         local validChars = "abcdefghijklmnopqrstuvwxyz1234567890."
@@ -220,9 +233,9 @@
     fn createViewportPreview sPreviewFile = 
 	(	
         /*
-        *    Source: Code adapted from <Capturing the viewport according to render resolution>
-        *    Author: Lone Robot
-        *    Availability: http://lonerobot.net/?p=959
+        *    Source:        Code adapted from <Capturing the viewport according to render resolution>
+        *    Author:        Lone Robot
+        *    Availability:  http://lonerobot.net/?p=959
         */
 
         
