@@ -15,10 +15,10 @@
 *
 */
 
-macroScript Batch_Camera_Viewport_Preview
-category:"Ciprian's Scripts"
-tooltip:"Batch Camera Viewport Preview"
-buttontext:"Camera Preview"
+MacroScript Batch_Camera_Viewport_Preview
+Category:"Ciprian's Scripts"
+Tooltip:"Batch Camera Viewport Preview"
+ButtonText:"Camera Preview"
 Icon:#("Cameras",2)
 (
 
@@ -36,6 +36,21 @@ Icon:#("Cameras",2)
     ) 
 
 
+    fn isCameraSelected = 
+    (
+        local aCameras = for c in getcurrentSelection() where ((superClassOf c) == camera) collect c
+
+        if aCameras.count == 0  then
+        (
+            return false
+        )
+        else
+        (
+            return true
+        )
+    )
+
+
     fn getAnimatedCameras = 
     (
         local aCameras = #()
@@ -44,9 +59,13 @@ Icon:#("Cameras",2)
         (
             aCameras = for c in cameras where ((classOf c) != TargetObject) and ((classOf c) != Dummy) collect c
         )
-        else
+        else if (getcurrentSelection()).count > 0 and isCameraSelected() then
         (
             aCameras = for c in getcurrentSelection() where ((superClassOf c) == camera) collect c
+        )
+        else
+        (
+            aCameras = for c in cameras where ((classOf c) != TargetObject) and ((classOf c) != Dummy) collect c
         )
 
         return aCameras
@@ -440,6 +459,7 @@ Icon:#("Cameras",2)
                 for oCamera in aCameras do 
                 (
                     createCamerasPreview oCamera sOuputFolder
+                    windows.processPostedMessages()
                 )
 
                 restoreHiddenCategories()
