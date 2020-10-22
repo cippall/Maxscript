@@ -1,20 +1,26 @@
+/*
+*   Name                :   Batch Camera Viewport Preview
+*   Author              :   Ciprian Pal
+*   Date                :   22-10-2020
+*   Version             :   1.0
+*   Description         :   Create viewport preview for the selected camera or for all cameras in the scene. 
+*                           Requieres user input to select the destination folder for saving the preview.
+*                           For each camera in the scene the script will create a folder based on the camera name 
+*                           and save the animation preview as a .jpg sequence.
+*
+*   Credits:
+*       - Colin Serren  :   http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
+*       - HalfVector    :   https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444
+*       - Lone Robot    :   http://lonerobot.net/?p=959
+*
+*/
+
+macroScript Batch_Camera_Viewport_Preview
+category:"Ciprian's Scripts"
+tooltip:"Batch Camera Viewport Preview"
+buttontext:"Camera Preview"
+Icon:#("Cameras",2)
 (
-    /*
-    *   Name                :   Batch Camera Viewport Preview
-    *   Author              :   Ciprian Pal
-    *   Date                :   22-10-2020
-    *   Version             :   1.0
-    *   Description         :   Create viewport preview for the selected camera or for all cameras in the scene. 
-    *                           Requieres user input to select the destination folder for saving the preview.
-    *                           For each camera in the scene the script will create a folder based on the camera name 
-    *                           and save the animation preview as a .jpg sequence.
-    *
-    *   Credits:
-    *       - Colin Serren  :   http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
-    *       - HalfVector    :   https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444
-    *       - Lone Robot    :   http://lonerobot.net/?p=959
-    *
-    */
 
     local aHiddenCategories = #(hideByCategory.shapes, hideByCategory.lights, hideByCategory.cameras, hideByCategory.helpers, hideByCategory.spacewarps, hideByCategory.particles, hideByCategory.bones)
     local aHelper = #()
