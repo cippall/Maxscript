@@ -21,7 +21,7 @@ Supported camera types:
 - Locate where the script was saved, select it and press Open.
 - Go to **Customize -> Customize User Interface** in the top toolbar menu.
 - Click on Toolbars tab.
-- From the Categories dropdown menu select Ciprian's Scripts.
+- From the Categories dropdown menu select CiprianScripts.
 - Drag the Batch_Camera_Viewport_Preview to an existing toolbar or a newly created one.
 
 ## Usage

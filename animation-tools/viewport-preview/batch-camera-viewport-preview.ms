@@ -15,7 +15,7 @@
 */
 
 MacroScript Batch_Camera_Viewport_Preview
-Category:"Ciprian's Scripts"
+Category:"CiprianScripts"
 Tooltip:"Batch Camera Viewport Preview"
 ButtonText:"Camera Preview"
 Icon:#("Cameras",2)
