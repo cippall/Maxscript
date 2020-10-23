@@ -2,7 +2,7 @@
 
 ## Description
 
-Creates vieport preview as .jpg sequences for 3dsmax animated cameras .
+Creates vieport preview as .jpg sequences for 3dsmax animated cameras.
 
 ## Compatibility
 
@@ -21,8 +21,8 @@ Creates vieport preview as .jpg sequences for 3dsmax animated cameras .
 
     * Click on the script shortcut.
     * A window popup will prmpt for selecting the output folder.
-    * The script will begin creating preview for all scene cameras or only for the  selected ones.
-    * Press Escape key to intrerupt the script.
+    * The script will begin creating preview for all cameras in teh scene or only for the selected ones.
+    * Press Escape key to intrerupt the script at any time.
 
 ## Notes
 
@@ -39,3 +39,16 @@ Creates vieport preview as .jpg sequences for 3dsmax animated cameras .
         - Viewport display is switched to Default Shading
         - Area to render is switched to View to avoid the region, cropt or blowup viewport rect obstructing the view.
     * Pleae ensure the file is saved before running the script to avoid any data loss.
+    *
+
+## Credits
+
+Based on code originally posted by:
+
+    - Colin Serren (http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews)
+    - HalfVector (https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444)
+    - Lone Robot (http://lonerobot.net/?p=959)
+
+## Disclaimer
+
+This script come without warranty of any kind. Use it at your own risk.
