@@ -6,7 +6,14 @@ Creates vieport preview as .jpg sequences for 3dsmax animated cameras.
 
 ## Compatibility
 
-3dsmax 2020
+Tested with 3dsmax 2020.
+
+Supported camera types:
+
+    - Physical
+    - Free
+    - CoronaCam
+    - VRayPhysicalCamera
 
 ## Instalation
 
@@ -21,7 +28,7 @@ Creates vieport preview as .jpg sequences for 3dsmax animated cameras.
 
     * Click on the script shortcut.
     * A window popup will prmpt for selecting the output folder.
-    * The script will begin creating preview for all cameras in teh scene or only for the selected ones.
+    * The script will begin creating preview for all cameras in the scene or only for the selected ones.
     * Press Escape key to intrerupt the script at any time.
 
 ## Notes
@@ -38,8 +45,7 @@ Creates vieport preview as .jpg sequences for 3dsmax animated cameras.
             7. bones
         - Viewport display is switched to Default Shading
         - Area to render is switched to View to avoid the region, cropt or blowup viewport rect obstructing the view.
-    * Pleae ensure the file is saved before running the script to avoid any data loss.
-    *
+    * Please ensure the file is saved before running the script to avoid any data loss.
 
 ## Credits
 
@@ -51,4 +57,4 @@ Based on code originally posted by:
 
 ## Disclaimer
 
-This script come without warranty of any kind. Use it at your own risk.
+This script comes without warranty of any kind. Use it at your own risk.

@@ -12,7 +12,6 @@
 *                                   - Colin Serren  :   http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
 *                                   - HalfVector    :   https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444
 *                                   - Lone Robot    :   http://lonerobot.net/?p=959
-*
 */
 
 MacroScript Batch_Camera_Viewport_Preview
@@ -470,9 +469,9 @@ Icon:#("Cameras",2)
 				if sOuputFolder != undefined then
 				(
 					getCurrentTimeRange()
-					hideCategories()
 					setViewportShadingType()
-					removeViewportHighliting()
+                    removeViewportHighliting()
+                    hideCategories()
 					setAreaTorenderToView()
 
 					for x = 1 to aCameras.count do 
