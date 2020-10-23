@@ -15,10 +15,6 @@ Supported camera types:
 - CoronaCam
 - VRayPhysicalCamera
 
-## TO DO
-
-- Better progress interruption. The current method may require pressing the ESC key multiple times before the script stops.
-
 ## Installation
 
 - Click on Scripting>Run Script in the top toolbar menu.
@@ -50,6 +46,10 @@ Supported camera types:
   - Viewport display is switched to Default Shading
   - Area to render is switched to View to avoid the region, cropt or blowup viewport rect obstructing the view.
 - Please ensure the file is saved before running the script to avoid any data loss.
+
+## To Do
+
+- Better progress interruption. The current method may require pressing the ESC key multiple times before the script stops.
 
 ## Credits
 
