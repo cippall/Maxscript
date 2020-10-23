@@ -2,7 +2,7 @@
 
 ## Description
 
-Creates viewport preview as .jpg sequences for 3dsmax animated cameras.
+Creates viewport preview for the selected cameras or for all scene cameras as .jpg sequences.
 
 ## Compatibility
 
