@@ -8,10 +8,10 @@
 *                           For each camera in the scene the script will create a folder based on the camera name 
 *                           and save the animation preview as a .jpg sequence.
 *
-*   Credits:
-*       - Colin Serren  :   http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
-*       - HalfVector    :   https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444
-*       - Lone Robot    :   http://lonerobot.net/?p=959
+*   Comments            :   Based on code from
+*                                   - Colin Serren  :   http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
+*                                   - HalfVector    :   https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444
+*                                   - Lone Robot    :   http://lonerobot.net/?p=959
 *
 */
 
@@ -28,6 +28,7 @@ Icon:#("Cameras",2)
     local aStoreAreaToRender = #()
     local aTimeRange = #()
     local sDefaultFolder = ""
+    local iTotalFrames = 0
 
 
     if doesDirectoryExist "R:\\" then
@@ -141,6 +142,15 @@ Icon:#("Cameras",2)
         return aAnimationRange
     )
 
+
+    fn getTotalFrames aCameras =
+    (
+        for oCamera in aCameras do 
+        (
+            aAnimationRange = getKeyFrames oCamera
+            iTotal += aAnimationRange[2]
+        )
+    )
 
     fn setAnimationTimeline iStart iEnd = 
     (   
@@ -258,7 +268,7 @@ Icon:#("Cameras",2)
     fn createViewportPreview sPreviewFile = 
 	(	
         /*
-        *    Source:        Code adapted from <Capturing the viewport according to render resolution>
+        *    Source:        Code adapted from blog post <Capturing the viewport according to render resolution>
         *    Author:        Lone Robot
         *    Availability:  http://lonerobot.net/?p=959
         */
@@ -266,19 +276,27 @@ Icon:#("Cameras",2)
         
 		local ViewCapture = undefined			
 		local CropView = getViewSize()
-		local fRatio = undefined
+        local fRatio = undefined
+        local progressStop = false
 
 		case of 
 		( 
 			(CropView.x > CropView.y):	(fRatio = CropView.y/CropView.x)
 			(CropView.x = CropView.y):	(fRatio = 1)			
 			(CropView.x < CropView.y):	(fRatio = CropView.x/CropView.y)
-	   )
+	    )
 
-        for t = animationrange.start to animationrange.end do
+        progressStart ((getFilenameFile sPreviewFile) as string + " Preview:")
+        escapeEnable = true
+
+        for t = animationrange.start to animationrange.end while not progressStop do
         (
             sliderTime = t
-
+            progPerct = (100.0 * (t / ((animationrange.end as integer)/TicksPerFrame + 1))) as integer
+            progressUpdate progPerct
+            progressStop = keyboard.escPressed
+            windows.processPostedMessages()
+            
 			sPreviewName = "" as stringStream
 			format "/%.%.jpg" (getFilenameFile sPreviewFile) (formattedPrint ((currentTime as integer)/TicksPerFrame) format:"04d") to: sPreviewName
             sPreviewFullPath = (getFilenamePath  sPreviewFile) + sPreviewName
@@ -287,7 +305,7 @@ Icon:#("Cameras",2)
             ViewCapture = bitmap renderwidth renderheight color:white filename: sPreviewFullPath
             ViewportRatio = ViewportDib.width/ViewportDib.height as float
             RenderRatio = renderwidth/renderheight as float
-        
+
             case of
             (
                 (ViewportRatio <= RenderRatio):		    (
@@ -311,7 +329,8 @@ Icon:#("Cameras",2)
             close ViewCapture
             close ViewportDib
         )
-        
+
+        progressEnd()
 		gc()
 
 		if ViewCapture != undefined then 
@@ -455,21 +474,12 @@ Icon:#("Cameras",2)
 					setViewportShadingType()
 					removeViewportHighliting()
 					setAreaTorenderToView()
-					
-					progressStart "Create preview:"
-					escapeEnable = true
-					progressStop = false
 
-					for x = 1 to aCameras.count while not progressStop do 
+					for x = 1 to aCameras.count do 
 					(
 						windows.processPostedMessages()   
 						createCamerasPreview aCameras[x] sOuputFolder
-						progPerct = (100.0 * x / aCameras.count) as integer
-						progressUpdate progPerct
-						progressStop = keyboard.escPressed
 					)
-					
-					progressEnd()
 
 					restoreHiddenCategories()
 					removeViewportHighlitingHelper()
