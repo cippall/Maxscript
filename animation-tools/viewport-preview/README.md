@@ -2,14 +2,40 @@
 
 ## Description
 
-Creates vieport preview for 3dsmax animated cameras.
+Creates vieport preview as .jpg sequences for 3dsmax animated cameras .
+
+## Compatibility
+
+3dsmax 2020
 
 ## Instalation
 
-    * Click on **Scripting>Run Script** in the toolbar menu
-    * Locate and select the script and press Open
-    * Click on **Cutomize>Customize User Interface** in the toolbar menu
-    * Click on **Toolbars** tab
-    * From the Categories dropdown menu select Ciprian's Scripts
+    * Click on Scripting>Run Script in the top toolbar menu.
+    * Locate and select the script and press Open.
+    * Click on Cutomize>Customize User Interface in the top toolbar menu.
+    * Click on Toolbars tab.
+    * From the Categories dropdown menu select Ciprian's Scripts.
+    * Drag the Batch_Camera_Viewport_Preview to an existing toolbar or a newly created one.
 
 ## Usage
+
+    * Click on the script shortcut.
+    * A window popup will prmpt for selecting the output folder.
+    * The script will begin creating preview for all scene cameras or only for the  selected ones.
+    * Press Escape key to intrerupt the script.
+
+## Notes
+
+    * Each preview sequence will be saved in individual folders named using the camera name.
+    * During the viewport grab some of the scene settings are changed to ensure the quality of the preview.
+        - Object classes that get hidden:
+            1. shapes
+            2. lights
+            3. cameras
+            4. helpers
+            5. spacewarps
+            6. particles
+            7. bones
+        - Viewport display is switched to Default Shading
+        - Area to render is switched to View to avoid the region, cropt or blowup viewport rect obstructing the view.
+    * Pleae ensure the file is saved before running the script to avoid any data loss.

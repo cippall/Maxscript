@@ -8,7 +8,7 @@
 *                           For each camera in the scene the script will create a folder based on the camera name 
 *                           and save the animation preview as a .jpg sequence.
 *
-*   Comments            :   Based on code from
+*   Comments            :   Based on code originally posted by:
 *                                   - Colin Serren  :   http://www.scriptspot.com/3ds-max/scripts/batch-camera-previews
 *                                   - HalfVector    :   https://forums.cgsociety.org/t/remove-escape-sequence-from-file-path-string/973444
 *                                   - Lone Robot    :   http://lonerobot.net/?p=959
@@ -296,7 +296,7 @@ Icon:#("Cameras",2)
             progressUpdate progPerct
             progressStop = keyboard.escPressed
             windows.processPostedMessages()
-            
+
 			sPreviewName = "" as stringStream
 			format "/%.%.jpg" (getFilenameFile sPreviewFile) (formattedPrint ((currentTime as integer)/TicksPerFrame) format:"04d") to: sPreviewName
             sPreviewFullPath = (getFilenamePath  sPreviewFile) + sPreviewName
