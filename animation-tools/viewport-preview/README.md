@@ -2,7 +2,7 @@
 
 ## Description
 
-Creates vieport preview as .jpg sequences for 3dsmax animated cameras.
+Creates viewport preview as .jpg sequences for 3dsmax animated cameras.
 
 ## Compatibility
 
@@ -17,13 +17,13 @@ Supported camera types:
 
 ## TO DO
 
-- Better progress interruption. The current method may requiere pressing the ESC key multiple times before the script stops.
+- Better progress interruption. The current method may require pressing the ESC key multiple times before the script stops.
 
-## Instalation
+## Installation
 
 - Click on Scripting>Run Script in the top toolbar menu.
 - Locate and select the script and press Open.
-- Click on Cutomize>Customize User Interface in the top toolbar menu.
+- Click on Customize>Customize User Interface in the top toolbar menu.
 - Click on Toolbars tab.
 - From the Categories dropdown menu select Ciprian's Scripts.
 - Drag the Batch_Camera_Viewport_Preview to an existing toolbar or a newly created one.
@@ -31,9 +31,9 @@ Supported camera types:
 ## Usage
 
 - Click on the script shortcut.
-- A window popup will prmpt for selecting the output folder.
-- The script will begin creating preview for all cameras in the scene or only for the selected ones.
-- Press Escape key to intrerupt the script at any time. It may requiere pressing it multiple times.
+- A window popup will prompt for selecting the output folder.
+- The script will begin creating previews for all cameras in the scene or only for the selected ones.
+- Press Escape key to interrupt the script at any time. It may require pressing it multiple times.
 
 ## Notes
 
