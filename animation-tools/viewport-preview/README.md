@@ -6,7 +6,7 @@ Creates viewport preview as .jpg sequences for 3dsmax animated cameras.
 
 ## Compatibility
 
-Tested with 3dsmax 2020.
+Tested with **3dsmax 2020**.
 
 Supported camera types:
 
@@ -17,9 +17,9 @@ Supported camera types:
 
 ## Installation
 
-- Click on Scripting>Run Script in the top toolbar menu.
-- Locate and select the script and press Open.
-- Click on Customize>Customize User Interface in the top toolbar menu.
+- Click on **Scripting -> Run** Script in the top toolbar menu.
+- Locate where the script was saved, select it and press Open.
+- Go to **Customize -> Customize User Interface** in the top toolbar menu.
 - Click on Toolbars tab.
 - From the Categories dropdown menu select Ciprian's Scripts.
 - Drag the Batch_Camera_Viewport_Preview to an existing toolbar or a newly created one.
