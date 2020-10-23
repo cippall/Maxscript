@@ -89,33 +89,42 @@ Icon:#("Cameras",2)
         if obj.target != undefined then append objs obj.target
             
         -- Check all objs associated with the obj (targets, etc)
-        for o in objs do (
+        for o in objs do 
+        (
             -- Position Controller Keys
-            if isProperty o #position then (
-                if o.position.controller.keys.count > 0 then (
+            if isProperty o #position then 
+            (
+                if o.position.controller.keys.count > 0 then 
+                (
                     append arrayOfKeys ((o.position.controller.keys[1].time as integer)/TicksPerFrame)
                     append arrayOfKeys ((o.position.controller.keys[o.position.controller.keys.count].time as integer)/TicksPerFrame)
                 )
             )
             
             -- Rotation Controller Keys
-            if isProperty o #rotation then (
-                if o.rotation.controller.keys.count > 0 then (
+            if isProperty o #rotation then 
+            (
+                if o.rotation.controller.keys.count > 0 then 
+                (
                     append arrayOfKeys ((o.rotation.controller.keys[1].time as integer)/TicksPerFrame)
                     append arrayOfKeys ((o.rotation.controller.keys[o.rotation.controller.keys.count].time as integer)/TicksPerFrame)
                 )
             )
             
             -- Scale Controller Keys
-            if isProperty o #scale then (
-                if o.scale.controller.keys.count > 0 then (
+            if isProperty o #scale then 
+            (
+                if o.scale.controller.keys.count > 0 then 
+                (
                     append arrayOfKeys ((o.scale.controller.keys[1].time as integer)/TicksPerFrame)
                     append arrayOfKeys ((o.scale.controller.keys[o.scale.controller.keys.count].time as integer)/TicksPerFrame)		
                 )
             )
             
-            if (classof o.position.controller) == Path_Constraint then (
-                if o.position.controller.percent.controller.keys.count > 0 then (
+            if (classof o.position.controller) == Path_Constraint then 
+            (
+                if o.position.controller.percent.controller.keys.count > 0 then 
+                (
                     append arrayOfKeys ((o.position.controller.percent.controller.keys[1].time as integer)/TicksPerFrame)
                     append arrayOfKeys ((o.position.controller.percent.controller.keys[o.position.controller.percent.controller.keys.count].time as integer)/TicksPerFrame)
                 )
@@ -124,9 +133,12 @@ Icon:#("Cameras",2)
         
         sort arrayOfKeys
         
-        if arrayOfKeys.count >= 2 then (
+        if arrayOfKeys.count >= 2 then 
+        (
             aAnimationRange = #(arrayOfKeys[1], arrayOfKeys[arrayOfKeys.count])
-        ) else (
+        ) 
+        else 
+        (
             aAnimationRange = #(0,1)
         )
         
@@ -231,7 +243,8 @@ Icon:#("Cameras",2)
         local finalStr = ""
         local aSplits = filterString str tokens
 
-        for i = 1 to aSplits.count - 1 do (
+        for i = 1 to aSplits.count - 1 do 
+        (
             finalStr += aSplits[i] + replacement
         )
 
@@ -254,8 +267,10 @@ Icon:#("Cameras",2)
         
         newString = str
         
-        for i = 1 to newString.count do (
-            if not(matchPattern validChars pattern:("*"+newString[i]+"*") ignoreCase:true) or (newString[i] == "*") then (
+        for i = 1 to newString.count do 
+        (
+            if not(matchPattern validChars pattern:("*"+newString[i]+"*") ignoreCase:true) or (newString[i] == "*") then 
+            (
                 newString[i] = "_"
             )
         )
