@@ -292,8 +292,13 @@ Icon:#("Cameras",2)
         (
             sliderTime = t
             progPerct = (100.0 * (t / ((animationrange.end as integer)/TicksPerFrame + 1))) as integer
-            progressUpdate progPerct
             progressStop = keyboard.escPressed
+            
+            if not progressStop then
+            (
+                progressUpdate progPerctescapeEnable
+            )
+           
             windows.processPostedMessages()
 
 			sPreviewName = "" as stringStream
