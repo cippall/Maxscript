@@ -1,4 +1,4 @@
-# Batch Camera Viewport Preview
+# Batch Viewport Animation Preview
 
 ## Description
 
@@ -22,7 +22,7 @@ Supported camera types:
 - Go to **Customize -> Customize User Interface** in the top toolbar menu.
 - Click on **Toolbars** tab.
 - From the Categories dropdown menu select **CiprianScripts**.
-- Drag the **Batch Camera Viewport Preview** item to an existing toolbar or a newly created one.
+- Drag the **Batch Viewport Animation Preview** item to an existing toolbar or a newly created one.
 
 ## Usage
 

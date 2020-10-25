@@ -1,5 +1,5 @@
 /*
-*   Name                :   Batch Camera Viewport Preview
+*   Name                :   Batch Viewport Animation Preview
 *   Author              :   Ciprian Pal
 *   Date                :   22-10-2020
 *   Version             :   1.0
@@ -14,11 +14,11 @@
 *                                   - Lone Robot    :   http://lonerobot.net/?p=959
 */
 
-MacroScript Batch_Camera_Viewport_Preview
+MacroScript Batch_Viewport_Animation_Preview
 Category:"CiprianScripts"
-Tooltip:"Batch Camera Viewport Preview"
-ButtonText:"Camera Preview"
-Icon:#("Cameras",2)
+Tooltip:"Batch Viewport Animation Preview"
+ButtonText:"BVAP"
+--Icon:#("Cameras",2)
 (
 
     local aHiddenCategories = #(hideByCategory.shapes, hideByCategory.lights, hideByCategory.cameras, hideByCategory.helpers, hideByCategory.spacewarps, hideByCategory.particles, hideByCategory.bones)
