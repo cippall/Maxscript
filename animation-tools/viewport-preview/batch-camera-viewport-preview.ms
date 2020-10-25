@@ -311,7 +311,7 @@ Icon:#("Cameras",2)
             
             if not progressStop then
             (
-                progressUpdate progPerctescapeEnable
+                progressUpdate progPerct
             )
            
             windows.processPostedMessages()
