@@ -203,6 +203,7 @@ MacroScript Batch_Viewport_Animation_Preview
         setViewportViewToCamera oCamera
         setSafeFrame()
         setViewportShadingType()
+        completeRedraw()
     )
 
 
@@ -396,19 +397,15 @@ MacroScript Batch_Viewport_Animation_Preview
 
 
     fn setAreaTorenderToView = 
-    (
-        if EditRenderRegion.IsEditable == true then
-		(
-			EditRenderRegion.EditRegion()
-        )
-        
-        if renderSceneDialog.isOpen() then
+    (        
+        if renderSceneDialog.isOpen() == true then
         (
             renderSceneDialog.close()
         )
 
         append aStoreAreaToRender (GetRenderType())
         SetRenderType aAreaToRender[1]
+        EditRenderRegion.UpdateRegion()
     )
 
 
@@ -504,9 +501,9 @@ MacroScript Batch_Viewport_Animation_Preview
 				(
 					getCurrentTimeRange()
 					setViewportShadingType()
-                    removeViewportHighliting()
                     hideCategories()
-					setAreaTorenderToView()
+                    setAreaTorenderToView()
+                    removeViewportHighliting()
 
 					for x = 1 to aCameras.count do 
 					(
@@ -516,7 +513,7 @@ MacroScript Batch_Viewport_Animation_Preview
 
 					restoreHiddenCategories()
 					removeViewportHighlitingHelper()
-					restoreAreaToRender()
+					--restoreAreaToRender()
 					restoreTimeRange()
 				) 
 			)
@@ -524,7 +521,7 @@ MacroScript Batch_Viewport_Animation_Preview
 			(
 					restoreHiddenCategories()
 					removeViewportHighlitingHelper()
-					restoreAreaToRender()
+					--restoreAreaToRender()
 					restoreTimeRange()
 			)
         )
