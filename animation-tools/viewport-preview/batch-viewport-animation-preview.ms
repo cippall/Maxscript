@@ -15,10 +15,11 @@
 */
 
 MacroScript Batch_Viewport_Animation_Preview
-Category:"CiprianScripts"
-Tooltip:"Batch Viewport Animation Preview"
-ButtonText:"BVAP"
---Icon:#("Cameras",2)
+
+        Category:"CiprianScripts"
+        Tooltip:"Batch Viewport Animation Preview"
+        ButtonText:"BVAP"
+        --Icon:#("Cameras",2)
 (
 
     local aHiddenCategories = #(hideByCategory.shapes, hideByCategory.lights, hideByCategory.cameras, hideByCategory.helpers, hideByCategory.spacewarps, hideByCategory.particles, hideByCategory.bones)
@@ -163,6 +164,7 @@ ButtonText:"BVAP"
         )
     )
 
+
     fn setAnimationTimeline iStart iEnd = 
     (   
         local tStart = iStart as time
@@ -174,7 +176,9 @@ ButtonText:"BVAP"
 
     fn setViewportShadingType = 
     (
-        viewport.SetRenderLevel #smoothhighlights
+        --viewport.SetRenderLevel #smoothhighlights
+        actionMan.executeAction 0 "63566"  -- Views: Default Shading
+        actionMan.executeAction -844228238 "13"  -- Viewport Lighting and Shadows: Standard
     )
 
 
@@ -185,9 +189,19 @@ ButtonText:"BVAP"
     )
 
 
+    fn setSafeFrame =
+    (
+        if not displaySafeFrames then
+        (
+            max safeframe toggle
+        )
+    )
+
+
     fn setVieport oCamera = 
     (
         setViewportViewToCamera oCamera
+        setSafeFrame()
         setViewportShadingType()
     )
 
@@ -367,7 +381,7 @@ ButtonText:"BVAP"
     (
         local oHelper = Point name:"vpg_helper"
         select oHelper
-        clearSelection()
+        --clearSelection()
         append aHelper oHelper
     )
 
